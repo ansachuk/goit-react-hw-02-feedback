@@ -24,7 +24,7 @@ export default class App extends Component {
   };
 
   onControlClick = title => {
-    Notify.info('Thank you for feedback!');
+    Notify.info('Thank for your feedback!');
     this.setState(prevState => {
       return {
         [title]: prevState[title] + 1,

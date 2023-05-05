@@ -16,4 +16,5 @@
   font-weight: 600;
 
   text-shadow: 3px 2px 0 #4f4f4f;
+  user-select: none;
 }
