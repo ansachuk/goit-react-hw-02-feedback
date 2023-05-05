@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const Controls = ({ title, onControlClick }) => {
   return (
     <button
@@ -10,3 +12,7 @@ const Controls = ({ title, onControlClick }) => {
   );
 };
 export default Controls;
+
+Controls.propTypes = {
+  title: PropTypes.string.isRequired,
+};

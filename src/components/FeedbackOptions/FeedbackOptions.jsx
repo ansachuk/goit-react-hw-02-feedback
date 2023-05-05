@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Controls from 'components/Controls/Controls';
 
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
@@ -11,3 +12,8 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
 };
 
 export default FeedbackOptions;
+
+FeedbackOptions.propTypes = {
+  options: PropTypes.array.isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired,
+};

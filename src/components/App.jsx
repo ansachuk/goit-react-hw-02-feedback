@@ -1,7 +1,10 @@
 import { Component } from 'react';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 import Statistics from './Statistics/Statistics';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 import Section from './Section/Section';
+import Notification from './Notification/Notification';
 
 export default class App extends Component {
   state = {
@@ -21,6 +24,7 @@ export default class App extends Component {
   };
 
   onControlClick = title => {
+    Notify.info('Thank you for feedback!');
     this.setState(prevState => {
       return {
         [title]: prevState[title] + 1,
@@ -36,13 +40,18 @@ export default class App extends Component {
             options={Object.keys(this.state)}
             onLeaveFeedback={this.onControlClick}
           />
-          <Statistics
-            good={this.state.good}
-            neutral={this.state.neutral}
-            bad={this.state.bad}
-            total={this.countTotalFeedback()}
-            positivePercentage={this.countPositiveFeedbackPercentage()}
-          />
+
+          {this.countTotalFeedback() ? (
+            <Statistics
+              good={this.state.good}
+              neutral={this.state.neutral}
+              bad={this.state.bad}
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
+            />
+          ) : (
+            <Notification message="There is no feedback" />
+          )}
         </Section>
       </>
     );
